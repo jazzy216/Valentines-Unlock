@@ -1,0 +1,79 @@
+<!-- assets/heart.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 180" role="img" aria-label="Heart">
+  <defs>
+    <!-- Soft highlight + depth -->
+    <linearGradient id="heartGrad" x1="30" y1="20" x2="170" y2="170" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#ff7aa2"/>
+      <stop offset="0.55" stop-color="#ff3d7a"/>
+      <stop offset="1" stop-color="#b91cff"/>
+    </linearGradient>
+
+    <radialGradient id="heartShine" cx="65" cy="55" r="85" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.55"/>
+      <stop offset="0.35" stop-color="#ffffff" stop-opacity="0.18"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+    </radialGradient>
+
+    <filter id="softShadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="10" stdDeviation="10" flood-color="#000000" flood-opacity="0.35"/>
+    </filter>
+
+    <filter id="glow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="6" result="blur"/>
+      <feColorMatrix in="blur" type="matrix"
+        values="1 0 0 0 0
+                0 0.35 0 0 0
+                0 0 1 0 0
+                0 0 0 0.55 0" result="colored"/>
+      <feMerge>
+        <feMergeNode in="colored"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- Clip for shine overlay -->
+    <clipPath id="heartClip">
+      <path d="M100 165
+               C 75 145, 35 118, 20 85
+               C 6 55, 20 22, 50 18
+               C 72 15, 90 28, 100 45
+               C 110 28, 128 15, 150 18
+               C 180 22, 194 55, 180 85
+               C 165 118, 125 145, 100 165 Z"/>
+    </clipPath>
+  </defs>
+
+  <!-- Outer glow -->
+  <path d="M100 165
+           C 75 145, 35 118, 20 85
+           C 6 55, 20 22, 50 18
+           C 72 15, 90 28, 100 45
+           C 110 28, 128 15, 150 18
+           C 180 22, 194 55, 180 85
+           C 165 118, 125 145, 100 165 Z"
+        fill="url(#heartGrad)"
+        filter="url(#glow) url(#softShadow)"/>
+
+  <!-- Shine overlay -->
+  <g clip-path="url(#heartClip)">
+    <ellipse cx="70" cy="55" rx="70" ry="55" fill="url(#heartShine)"/>
+    <!-- subtle diagonal gloss streak -->
+    <path d="M25 80 C60 40, 95 35, 150 55"
+          fill="none" stroke="#fff" stroke-opacity="0.22" stroke-width="10" stroke-linecap="round"/>
+    <path d="M30 95 C65 55, 100 50, 155 70"
+          fill="none" stroke="#fff" stroke-opacity="0.14" stroke-width="8" stroke-linecap="round"/>
+  </g>
+
+  <!-- Inner border for crispness -->
+  <path d="M100 161
+           C 76 142, 40 116, 26 85
+           C 14 58, 26 28, 52 24
+           C 72 21, 89 34, 100 52
+           C 111 34, 128 21, 148 24
+           C 174 28, 186 58, 174 85
+           C 160 116, 124 142, 100 161 Z"
+        fill="none"
+        stroke="#ffffff"
+        stroke-opacity="0.22"
+        stroke-width="3"/>
+</svg>
