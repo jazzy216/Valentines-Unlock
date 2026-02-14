@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Valentine Unlock Game</title>
+  <meta name="description" content="A tiny Valentine game: score points to unlock a secret message." />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <main class="wrap">
+    <header class="top">
+      <div class="brand">
+        <div class="logo" aria-hidden="true">❤</div>
+        <div>
+          <h1>Valentine Unlock Game</h1>
+          <p class="sub">Catch hearts. Score points. Unlock the message.</p>
+        </div>
+      </div>
+
+      <div class="hud" role="group" aria-label="Score and progress">
+        <div class="pill">
+          <span class="label">Score</span>
+          <span id="score" class="value">0</span>
+        </div>
+        <div class="pill">
+          <span class="label">Goal</span>
+          <span id="goal" class="value">25</span>
+        </div>
+        <div class="pill">
+          <span class="label">Streak</span>
+          <span id="streak" class="value">0</span>
+        </div>
+      </div>
+    </header>
+
+    <section class="card game">
+      <div class="controls">
+        <button id="startBtn" class="btn primary">Start</button>
+        <button id="pauseBtn" class="btn" disabled>Pause</button>
+        <button id="resetBtn" class="btn">Reset</button>
+
+        <div class="difficulty">
+          <label for="difficulty">Difficulty</label>
+          <select id="difficulty">
+            <option value="easy" selected>Easy</option>
+            <option value="normal">Normal</option>
+            <option value="hard">Hard</option>
+          </select>
+        </div>
+
+        <div class="sound">
+          <label class="switch">
+            <input id="soundToggle" type="checkbox" checked />
+            <span class="slider" aria-hidden="true"></span>
+          </label>
+          <span class="muted">Sound</span>
+        </div>
+      </div>
+
+      <div class="stageWrap">
+        <canvas id="stage" width="900" height="520" aria-label="Game canvas"></canvas>
+
+        <div class="overlay" id="overlay">
+          <div class="overlayCard">
+            <h2 id="overlayTitle">Ready?</h2>
+            <p id="overlayText">Press Start. Click/tap hearts to score points.</p>
+            <div class="overlayActions">
+              <button id="overlayStart" class="btn primary">Start</button>
+              <button id="overlayHow" class="btn">How it works</button>
+            </div>
+            <ul class="how" id="howList" hidden>
+              <li>Hearts float up — click/tap them before they fade.</li>
+              <li>Keep a streak for bonus points.</li>
+              <li>Reach the goal to unlock the message.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <footer class="foot">
+        <div class="progress">
+          <div class="bar">
+            <div id="barFill" class="fill" style="width:0%"></div>
+          </div>
+          <div class="muted"><span id="progressText">0%</span> unlocked</div>
+        </div>
+
+        <button id="unlockBtn" class="btn primary" disabled>
+          Unlock Message
+        </button>
+      </footer>
+    </section>
+
+    <section class="card reveal" id="revealCard" aria-live="polite" hidden>
+      <div class="revealInner">
+        <div class="seal" aria-hidden="true">💌</div>
+        <h2>Unlocked</h2>
+        <p class="big" id="loveMessage">I LOVE YOU</p>
+        <p class="muted">You did it. Happy Valentine’s Day.</p>
+
+        <div class="revealActions">
+          <button id="confettiBtn" class="btn primary">More Confetti</button>
+          <button id="playAgainBtn" class="btn">Play Again</button>
+        </div>
+      </div>
+    </section>
+
+    <footer class="tiny muted">
+      Tip: edit the message in <code>js/app.js</code> (LOVE_MESSAGE).
+    </footer>
+  </main>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
